@@ -11,12 +11,12 @@ steps:
     composition: testing/docker-compose.yaml
     description: This should succeed
     composition_candidates:
-    test_service:
-      image: ${{BuildImage}}
-      environment:
-        - ANCHORE_CLI_IMAGE=alpine
-        - ANCHORE_CLI_URL=http://anchore-engine::8228/v1
-        - ANCHORE_CLI_FAIL_ON_POLICY=true
+      test_service:
+        image: ${{BuildImage}}
+        environment:
+          - ANCHORE_CLI_IMAGE=alpine
+          - ANCHORE_CLI_URL=http://anchore-engine::8228/v1
+          - ANCHORE_CLI_FAIL_ON_POLICY=true
   TestFailure:
     fail_fast: false
     title: Running failure test
@@ -25,12 +25,12 @@ steps:
     environment_name: anchore_engine
     composition: testing/docker-compose.yaml
     composition_candidates:
-    test_service:
-      image: ${{BuildImage}}
-      environment:
-        - ANCHORE_CLI_IMAGE=alpine
-        - ANCHORE_CLI_URL=http://anchore-engine::8228/v1
-        - ANCHORE_CLI_FAIL_ON_POLICY=true
+      test_service:
+        image: ${{BuildImage}}
+        environment:
+          - ANCHORE_CLI_IMAGE=alpine
+          - ANCHORE_CLI_URL=http://anchore-engine::8228/v1
+          - ANCHORE_CLI_FAIL_ON_POLICY=true
   PushingToRegistry:
     type: push
     title: Pushing To Registry
