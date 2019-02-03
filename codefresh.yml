@@ -11,8 +11,10 @@ steps:
     composition: testing/docker-compose.yaml
     description: This should succeed
     composition_candidates:
-      test_service:
+      test_plugin:
         image: ${{BuildImage}}
+        depends_on:
+          - anchore-engine
         environment:
           - ANCHORE_CLI_IMAGE=alpine
           - ANCHORE_CLI_URL=http://anchore-engine::8228/v1
@@ -25,8 +27,10 @@ steps:
     environment_name: anchore_engine
     composition: testing/docker-compose.yaml
     composition_candidates:
-      test_service:
+      test_plugin:
         image: ${{BuildImage}}
+        depends_on:
+          - anchore-engine
         environment:
           - ANCHORE_CLI_IMAGE=alpine
           - ANCHORE_CLI_URL=http://anchore-engine::8228/v1
