@@ -4,57 +4,6 @@ steps:
     title: Building Docker Image
     type: build
     image_name: ${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}
-  TestSuccess:
-    title: Running basic test
-    type: composition
-    description: This should succeed
-    environment_name: anchore_engine
-    working_directory:  ${{main_clone}}/testing
-    composition: 
-      version: '2'
-      services:
-        anchore-engine:
-          image: docker.io/anchore/anchore-engine:latest
-          depends_on:
-          - anchore-db
-          volumes:
-          - ./config:/config/:z
-          environment:
-          - ANCHORE_HOST_ID=anchore-engine
-          - ANCHORE_ENDPOINT_HOSTNAME=anchore-engine
-        anchore-db:
-          image: "postgres:9"
-          volumes:
-          - ./db:/var/lib/postgresql/data/pgdata/:z
-          environment:
-            - POSTGRES_PASSWORD=mysecretpassword
-            - PGDATA=/var/lib/postgresql/data/pgdata/
-    composition_candidates:
-      test_plugin:
-        image: ${{BuildImage}}
-        depends_on:
-          - anchore-engine
-        command: sleep 60 && ./entrypoint.sh
-        environment:
-          - ANCHORE_CLI_IMAGE=alpine
-          - ANCHORE_CLI_URL=http://anchore-engine::8228/v1
-          - ANCHORE_CLI_FAIL_ON_POLICY=true
-  TestFailure:
-    fail_fast: false
-    title: Running failure test
-    description: This should fail
-    type: composition
-    environment_name: anchore_engine
-    composition: testing/docker-compose.yaml
-    composition_candidates:
-      test_plugin:
-        image: ${{BuildImage}}
-        depends_on:
-          - anchore-engine
-        environment:
-          - ANCHORE_CLI_IMAGE=alpine
-          - ANCHORE_CLI_URL=http://anchore-engine::8228/v1
-          - ANCHORE_CLI_FAIL_ON_POLICY=true
   PushingToRegistry:
     type: push
     title: Pushing To Registry
