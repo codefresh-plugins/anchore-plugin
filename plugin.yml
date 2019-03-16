@@ -1,11 +1,16 @@
-title: Anchore
 image: codefreshplugins/anchore-plugin
 description: Analyze Docker images and generate a detailed manifest using Anchore
-category:
+version: 0.1.0
+keywords:
+  - anchore
+  - security
+  - scan
+categories:
   - Security
-source: https://github.com/codefresh-contrib/anchore-plugin
-logo: 'https://s3.amazonaws.com/cdn.freshdesk.com/data/helpdesk/attachments/production/36000068577/logo/UneMLlrkjo4WhDrYBeB91ie0QeWCbs8S5g.png'
-maintainer:
+sources:
+  - https://github.com/codefresh-contrib/anchore-plugin
+icon: 'https://s3.amazonaws.com/cdn.freshdesk.com/data/helpdesk/attachments/production/36000068577/logo/UneMLlrkjo4WhDrYBeB91ie0QeWCbs8S5g.png'
+maintainers:
   - name: Jeremy Valance
 envs:
 - name: ANCHORE_CLI_URL
