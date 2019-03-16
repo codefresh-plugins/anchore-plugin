@@ -3,9 +3,9 @@ steps:
   BuildImage:
     title: Building Docker Image
     type: build
-    image_name: codefresh/anchore-plugin
+    image_name: codefreshplugins/anchore-plugin
   PushingToRegistry:
     type: push
     title: Pushing To Registry
     candidate: ${{BuildImage}}
-    tag: '${{CF_BRANCH}}'
+    tag: 'latest'
