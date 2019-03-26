@@ -9,7 +9,7 @@ categories:
   - Security
 sources:
   - https://github.com/codefresh-contrib/anchore-plugin
-icon: 'https://s3.amazonaws.com/cdn.freshdesk.com/data/helpdesk/attachments/production/36000068577/logo/UneMLlrkjo4WhDrYBeB91ie0QeWCbs8S5g.png'
+icon: https://github.com/codefresh-plugins/anchore-plugin/blob/master/icon.jpg
 maintainers:
   - name: Jeremy Valance
 envs:
