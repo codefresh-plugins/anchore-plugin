@@ -6,7 +6,7 @@ keywords:
   - security
   - scan
 categories:
-  - Security
+  - security
 sources:
   - https://github.com/codefresh-contrib/anchore-plugin
 icon: https://raw.githubusercontent.com/codefresh-plugins/anchore-plugin/master/icon.jpg
